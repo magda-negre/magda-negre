@@ -8,7 +8,14 @@
   },
   "amazonUrl": "https://www.amazon.es/punta-iceberg-Magda-Negre-Chauveau/dp/8418854340",
   "amazonLabel": "Comprar «La punta del iceberg» en Amazon",
-  "novelas": [],
+  "novelas": [
+    {
+      "id": "h580ey8",
+      "title": "Novela de prueba ",
+      "year": "2026",
+      "text": "Escribe aquí el texto."
+    }
+  ],
   "cuentos": [],
   "misterio": [],
   "arte": []
