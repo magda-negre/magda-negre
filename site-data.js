@@ -151,12 +151,13 @@ function utf8ToBase64(str) {
 }
 
 async function gh(path, token, opts) {
-  const res = await fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/' + path, {
+  const base = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME;
+  const url = path ? base + '/' + path : base;
+  const res = await fetch(url, {
     ...(opts || {}),
     headers: {
       Authorization: 'Bearer ' + token,
       Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
       ...((opts && opts.headers) || {}),
     },
   });
@@ -191,12 +192,16 @@ async function putFile(path, base64, token, message) {
 
 /** Comprueba que el token funciona antes de guardar nada. */
 export async function verifyToken(token) {
+  let res;
   try {
-    const res = await gh('', token);
-    return res.ok;
+    res = await gh('', token);
   } catch (e) {
     throw new Error('No se pudo conectar con GitHub. Comprueba tu conexión.');
   }
+  if (res.status === 401) throw new Error('La clave no es válida o ha caducado.');
+  if (res.status === 403) throw new Error('La clave no tiene permiso sobre este repositorio.');
+  if (res.status === 404) throw new Error('No se encuentra el repositorio con esta clave. Revisa que el permiso «Contents» esté en «Read and write».');
+  return res.ok;
 }
 
 function setDeep(obj, keys, value) {
