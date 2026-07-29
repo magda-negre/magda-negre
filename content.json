@@ -16,7 +16,14 @@
       "text": "Escribe aquí el texto."
     }
   ],
-  "cuentos": [],
+  "cuentos": [
+    {
+      "id": "k1mwnmb",
+      "title": "Título del cuento",
+      "year": "2026",
+      "text": "El perro arqueólogo"
+    }
+  ],
   "misterio": [],
   "arte": []
 }
