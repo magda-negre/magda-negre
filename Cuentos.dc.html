@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    ::selection { background: rgba(161,90,58,0.28); }
+    [contenteditable="true"]:hover { outline: 1px dashed #a15a3a; outline-offset: 4px; }
+    [contenteditable="true"]:focus { outline: 1px solid #a15a3a; outline-offset: 4px; }
+    a { color: #a15a3a; }
+    a:hover { color: #7d4229; }
+  </style>
+</helmet>
+
+<div style="background:#f6f1e7; color:#2b2420; min-height:100vh; font-family:'EB Garamond', Georgia, serif; -webkit-font-smoothing:antialiased;" data-screen-label="Cuentos">
+
+  <nav style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 48px; background:rgba(246,241,231,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(43,36,32,0.14);">
+    <a href="./index.html" style="font-family:'EB Garamond', serif; font-style:italic; font-size:21px; color:#2b2420; text-decoration:none;">{{ authorName }}</a>
+    <div style="display:flex; align-items:center; gap:30px; flex-wrap:wrap;">
+      <a href="./index.html#bio" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c; text-decoration:none;">Biografía</a>
+      <a href="./Novelas.dc.html" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c; text-decoration:none;">Novelas</a>
+      <a href="./Cuentos.dc.html" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#a15a3a; text-decoration:none;">Cuentos</a>
+      <a href="./Misterio.dc.html" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c; text-decoration:none;">Relatos de misterio</a>
+      <a href="./index.html#arte" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c; text-decoration:none;">Arte</a>
+      <a href="./index.html#contacto" style="font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c; text-decoration:none;">Contacto</a>
+    </div>
+  </nav>
+
+  <sc-if value="{{ showIndex }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:1120px; margin:0 auto; padding:90px 48px 130px;">
+      <div style="font-family:'Jost', sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; color:#a15a3a; margin-bottom:14px;">Escritos</div>
+      <h1 style="font-family:'EB Garamond', serif; font-weight:500; font-style:italic; font-size:44px; margin:0 0 8px;">{{ sectionTitle }}</h1>
+      <p style="font-size:17px; color:#8a7d6c; margin:0 0 6px;">{{ sectionSubtitle }}</p>
+      <div style="font-family:'Jost', sans-serif; font-size:12.5px; letter-spacing:0.06em; color:#8a7d6c; margin-bottom:56px;">{{ countLabel }}</div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:24px;">
+        <sc-for list="{{ items }}" as="item" hint-placeholder-count="3">
+          <div style="position:relative;">
+            <sc-if value="{{ editMode }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ item.onDelete }}" title="Borrar" style="position:absolute; top:-10px; right:-10px; z-index:5; width:26px; height:26px; border-radius:50%; border:1px solid rgba(43,36,32,0.28); background:#f6f1e7; color:#2b2420; font-size:14px; line-height:1; cursor:pointer;">×</button>
+            </sc-if>
+            <button onClick="{{ item.onOpen }}" style="width:100%; text-align:left; display:flex; flex-direction:column; justify-content:space-between; min-height:180px; padding:26px; border:1px solid rgba(43,36,32,0.14); border-top:2px solid #a15a3a; border-radius:2px; background:#efe6d6; color:#2b2420; cursor:pointer; font-family:'EB Garamond', serif;" style-hover="background:#e9ded0;">
+              <span style="font-size:24px; line-height:1.25; font-weight:600;">{{ item.title }}</span>
+              <span style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:22px;">
+                <span style="font-family:'Jost', sans-serif; font-size:12.5px; letter-spacing:0.06em; color:#8a7d6c;">{{ item.year }}</span>
+                <span style="font-family:'Jost', sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:0.09em; color:#a15a3a;">Leer →</span>
+              </span>
+            </button>
+          </div>
+        </sc-for>
+        <sc-if value="{{ editMode }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ addItem }}" style="min-height:180px; border:1px dashed rgba(43,36,32,0.28); border-radius:2px; background:transparent; color:#8a7d6c; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">{{ addLabel }}</button>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="font-style:italic; font-size:17px; color:#8a7d6c;">Todavía no hay nada publicado en esta sección.</div>
+      </sc-if>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showDetail }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:780px; margin:0 auto; padding:70px 48px 130px;">
+      <button onClick="{{ closeItem }}" style="border:none; background:transparent; padding:0; margin-bottom:44px; cursor:pointer; font-family:'Jost', sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:0.09em; color:#8a7d6c;">{{ backLabel }}</button>
+      <div contentEditable="{{ editMode }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ onYearBlur }}" style="font-family:'Jost', sans-serif; font-size:13px; letter-spacing:0.08em; color:#a15a3a; margin-bottom:14px;">{{ currentYear }}</div>
+      <h1 contentEditable="{{ editMode }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ onTitleBlur }}" style="font-family:'EB Garamond', serif; font-weight:600; font-size:42px; line-height:1.15; margin:0 0 36px;">{{ currentTitle }}</h1>
+      <p contentEditable="{{ editMode }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ onTextBlur }}" style="font-size:19px; line-height:1.8; color:#4a4038; margin:0; white-space:pre-line; text-wrap:pretty;">{{ currentText }}</p>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ askingCode }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(43,36,32,0.5); display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div style="background:#f6f1e7; border:1px solid rgba(43,36,32,0.14); border-radius:4px; padding:36px; width:100%; max-width:390px; box-shadow:0 24px 60px rgba(43,36,32,0.3);">
+        <div style="font-family:'Jost', sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:0.1em; color:#8a7d6c; margin-bottom:14px;">Acceso de edición</div>
+        <div style="font-family:'EB Garamond', serif; font-size:23px; margin-bottom:24px;">Introduce el código</div>
+        <input type="password" value="{{ codeInput }}" onChange="{{ onCodeChange }}" onKeyDown="{{ onCodeKeyDown }}" placeholder="Código" autoFocus="{{ true }}" style="width:100%; box-sizing:border-box; padding:12px 14px; font-family:'Jost', sans-serif; font-size:15px; color:#2b2420; background:#efe6d6; border:1px solid rgba(43,36,32,0.14); border-radius:2px; outline:none;" />
+        <div style="font-family:'Jost', sans-serif; font-size:12.5px; color:#b0442f; min-height:20px; margin:8px 0 16px;">{{ codeError }}</div>
+        <div style="display:flex; gap:10px;">
+          <button onClick="{{ submitCode }}" style="flex:1; padding:12px; border:none; border-radius:2px; background:#a15a3a; color:#f6f1e7; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Entrar</button>
+          <button onClick="{{ cancelCode }}" style="flex:1; padding:12px; border:1px solid rgba(43,36,32,0.2); border-radius:2px; background:transparent; color:#8a7d6c; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ askingToken }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(43,36,32,0.5); display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div style="background:#f6f1e7; border:1px solid rgba(43,36,32,0.14); border-radius:4px; padding:36px; width:100%; max-width:460px; box-shadow:0 24px 60px rgba(43,36,32,0.3);">
+        <div style="font-family:'Jost', sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:0.1em; color:#8a7d6c; margin-bottom:14px;">Publicar en internet</div>
+        <div style="font-family:'EB Garamond', serif; font-size:23px; margin-bottom:12px;">Clave de publicación</div>
+        <p style="font-size:15.5px; line-height:1.6; color:#4a4038; margin:0 0 20px;">Pega aquí tu clave personal de GitHub. Se guarda solo en este navegador y hace falta una única vez.</p>
+        <input type="password" value="{{ tokenInput }}" onChange="{{ onTokenChange }}" onKeyDown="{{ onTokenKeyDown }}" placeholder="github_pat_…" autoFocus="{{ true }}" style="width:100%; box-sizing:border-box; padding:12px 14px; font-family:'Jost', sans-serif; font-size:14px; color:#2b2420; background:#efe6d6; border:1px solid rgba(43,36,32,0.14); border-radius:2px; outline:none;" />
+        <div style="font-family:'Jost', sans-serif; font-size:12.5px; color:#b0442f; min-height:20px; margin:8px 0 16px;">{{ tokenError }}</div>
+        <div style="display:flex; gap:10px;">
+          <button onClick="{{ submitToken }}" style="flex:1; padding:12px; border:none; border-radius:2px; background:#a15a3a; color:#f6f1e7; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Guardar y publicar</button>
+          <button onClick="{{ cancelToken }}" style="flex:1; padding:12px; border:1px solid rgba(43,36,32,0.2); border-radius:2px; background:transparent; color:#8a7d6c; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:fixed; bottom:28px; right:28px; z-index:40; display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end;">
+    <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:10px 16px; border-radius:999px; background:#2b2420; color:#f6f1e7; font-family:'Jost', sans-serif; font-size:12px; letter-spacing:0.04em; box-shadow:0 6px 20px rgba(43,36,32,0.3);">{{ statusMsg }}</div>
+    </sc-if>
+    <sc-if value="{{ canPublish }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ startPublish }}" disabled="{{ publishing }}" style="padding:12px 22px; border-radius:999px; border:none; background:#a15a3a; color:#f6f1e7; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer; box-shadow:0 6px 20px rgba(43,36,32,0.25);">{{ publishLabel }}</button>
+    </sc-if>
+    <button onClick="{{ toggleEdit }}" style="padding:12px 22px; border-radius:999px; border:1px solid rgba(43,36,32,0.2); background:{{ editBtnBg }}; color:{{ editBtnColor }}; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer; box-shadow:0 6px 20px rgba(43,36,32,0.18);">{{ editLabel }}</button>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SECTION = 'cuentos';
+
+class Component extends DCLogic {
+  state = {
+    loaded: false,
+    editMode: false,
+    content: null,
+    hasDraft: false,
+    openId: null,
+    askingCode: false, codeInput: '', codeError: '',
+    askingToken: false, tokenInput: '', tokenError: '',
+    publishing: false, statusMsg: '',
+  };
+
+  async componentDidMount() {
+    this.data = await import('./site-data.js');
+    const { content, hasDraft } = await this.data.loadContent();
+    this.words = this.data.SECTION_WORDS[SECTION];
+    this.setState({ loaded: true, content, hasDraft, editMode: this.data.loadEditMode() });
+  }
+
+  mutate = (fn) => {
+    const content = JSON.parse(JSON.stringify(this.state.content));
+    fn(content);
+    this.data.saveDraft(content);
+    this.setState({ content, hasDraft: true });
+  };
+
+  flash = (msg, ms) => {
+    this.setState({ statusMsg: msg });
+    if (this._t) clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ statusMsg: '' }), ms || 3500);
+  };
+
+  toggleEdit = () => {
+    if (this.state.editMode) {
+      this.data.saveEditMode(false);
+      this.setState({ editMode: false });
+      return;
+    }
+    this.setState({ askingCode: true, codeInput: '', codeError: '' });
+  };
+
+  submitCode = () => {
+    if (this.data.verifyEditCode(this.state.codeInput)) {
+      this.data.saveEditMode(true);
+      this.setState({ editMode: true, askingCode: false, codeInput: '', codeError: '' });
+    } else {
+      this.setState({ codeError: 'Código incorrecto.' });
+    }
+  };
+
+  addItem = () => {
+    const item = {
+      id: this.data.uid(),
+      title: 'Título de la ' + this.words.singular,
+      year: String(new Date().getFullYear()),
+      text: 'Escribe aquí el texto.',
+    };
+    this.mutate((c) => c[SECTION].push(item));
+    this.setState({ openId: item.id });
+  };
+
+  updateCurrent = (field, value) => {
+    const id = this.state.openId;
+    this.mutate((c) => {
+      const it = c[SECTION].find((x) => x.id === id);
+      if (it) it[field] = value;
+    });
+  };
+
+  startPublish = async () => {
+    const token = this.data.loadToken();
+    if (!token) {
+      this.setState({ askingToken: true, tokenInput: '', tokenError: '' });
+      return;
+    }
+    this.doPublish(token);
+  };
+
+  submitToken = async () => {
+    const t = this.state.tokenInput.trim();
+    if (!t) { this.setState({ tokenError: 'Pega la clave.' }); return; }
+    this.setState({ tokenError: 'Comprobando…' });
+    let ok = false;
+    try {
+      ok = await this.data.verifyToken(t);
+    } catch (e) {
+      this.setState({ tokenError: e.message || 'No se pudo conectar con GitHub.' });
+      return;
+    }
+    if (!ok) { this.setState({ tokenError: 'La clave no es válida o no tiene permisos.' }); return; }
+    this.data.saveToken(t);
+    this.setState({ askingToken: false, tokenInput: '', tokenError: '' });
+    this.doPublish(t);
+  };
+
+  doPublish = async (token) => {
+    this.setState({ publishing: true, statusMsg: 'Publicando…' });
+    try {
+      const published = await this.data.publish(this.state.content, token, (m) => this.setState({ statusMsg: m }));
+      this.setState({ content: published, hasDraft: false, publishing: false });
+      this.flash('Publicado. La web se actualizará en un minuto.', 6000);
+    } catch (e) {
+      this.setState({ publishing: false });
+      if (String(e.message).indexOf('no válid') >= 0 || String(e.message).indexOf('permiso') >= 0) {
+        this.data.clearToken();
+      }
+      this.flash(e.message || 'No se pudo publicar.', 8000);
+    }
+  };
+
+  renderVals() {
+    const c = this.state.content;
+    const w = this.words || { singular: '', plural: '', title: '', subtitle: '', back: '' };
+    if (!c) {
+      return { showIndex: true, showDetail: false, items: [], editMode: false, authorName: '', sectionTitle: w.title, sectionSubtitle: w.subtitle, countLabel: '', editLabel: 'Modo edición', editBtnBg: '#e9ded0', editBtnColor: '#2b2420', addLabel: '', backLabel: '' };
+    }
+    const em = this.state.editMode;
+    const list = c[SECTION] || [];
+    const parseYear = (y) => {
+      const m = String(y || '').match(/\d{4}/);
+      return m ? parseInt(m[0], 10) : -Infinity;
+    };
+    const items = [...list].sort((a, b) => parseYear(b.year) - parseYear(a.year)).map((it) => ({
+      ...it,
+      onOpen: () => this.setState({ openId: it.id }),
+      onDelete: () => this.mutate((d) => {
+        const i = d[SECTION].findIndex((x) => x.id === it.id);
+        if (i >= 0) d[SECTION].splice(i, 1);
+      }),
+    }));
+    const current = list.find((it) => it.id === this.state.openId) || null;
+    return {
+      loaded: this.state.loaded,
+      editMode: em,
+      authorName: c.author.name,
+      sectionTitle: w.title,
+      sectionSubtitle: w.subtitle,
+      countLabel: list.length === 1 ? '1 ' + w.singular : list.length + ' ' + w.plural,
+      items,
+      isEmpty: list.length === 0 && !em,
+      showIndex: !current,
+      showDetail: !!current,
+      currentTitle: current ? current.title : '',
+      currentYear: current ? current.year : '',
+      currentText: current ? current.text : '',
+      backLabel: w.back,
+      addLabel: '+ Añadir ' + w.singular,
+      closeItem: () => this.setState({ openId: null }),
+      onTitleBlur: (e) => this.updateCurrent('title', e.target.innerText),
+      onYearBlur: (e) => this.updateCurrent('year', e.target.innerText.trim()),
+      onTextBlur: (e) => this.updateCurrent('text', e.target.innerText),
+      addItem: this.addItem,
+      toggleEdit: this.toggleEdit,
+      editLabel: em ? 'Terminar edición' : 'Modo edición',
+      editBtnBg: em ? '#a15a3a' : '#e9ded0',
+      editBtnColor: em ? '#f6f1e7' : '#2b2420',
+      askingCode: this.state.askingCode,
+      codeInput: this.state.codeInput,
+      codeError: this.state.codeError,
+      onCodeChange: (e) => this.setState({ codeInput: e.target.value, codeError: '' }),
+      onCodeKeyDown: (e) => { if (e.key === 'Enter') this.submitCode(); if (e.key === 'Escape') this.setState({ askingCode: false }); },
+      submitCode: this.submitCode,
+      cancelCode: () => this.setState({ askingCode: false, codeInput: '', codeError: '' }),
+      askingToken: this.state.askingToken,
+      tokenInput: this.state.tokenInput,
+      tokenError: this.state.tokenError,
+      onTokenChange: (e) => this.setState({ tokenInput: e.target.value, tokenError: '' }),
+      onTokenKeyDown: (e) => { if (e.key === 'Enter') this.submitToken(); if (e.key === 'Escape') this.setState({ askingToken: false }); },
+      submitToken: this.submitToken,
+      cancelToken: () => this.setState({ askingToken: false, tokenInput: '', tokenError: '' }),
+      canPublish: em && this.state.hasDraft,
+      publishing: this.state.publishing,
+      publishLabel: this.state.publishing ? 'Publicando…' : 'Publicar cambios',
+      startPublish: this.startPublish,
+      statusMsg: this.state.statusMsg,
+      showStatus: !!this.state.statusMsg,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
