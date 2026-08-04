@@ -11,7 +11,31 @@
   "novelas": [
     {
       "id": "h580ey8",
-      "title": "Novela de prueba ",
+      "title": "El viaje",
+      "year": "2026",
+      "text": "Escribe aquí el texto."
+    },
+    {
+      "id": "jd1cjep",
+      "title": "A través del silencio",
+      "year": "2026",
+      "text": "Escribe aquí el texto."
+    },
+    {
+      "id": "65ewjbb",
+      "title": "El equívoco",
+      "year": "2026",
+      "text": "Escribe aquí el texto."
+    },
+    {
+      "id": "7i3w2lv",
+      "title": "Bajo la punta del iceberg",
+      "year": "2026",
+      "text": "Escribe aquí el texto."
+    },
+    {
+      "id": "581oenj",
+      "title": "El eslabón",
       "year": "2026",
       "text": "Escribe aquí el texto."
     }
@@ -71,83 +95,93 @@
   "arte": [
     {
       "id": "5s075mo",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Modelo de pie",
       "image": "assets/obra-5s075mo-msbxk4y7.jpg"
     },
     {
       "id": "j1yc3pa",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Pequeña",
       "image": "assets/obra-j1yc3pa-msbxk66d.jpg"
     },
     {
       "id": "swtxvd9",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Fuego",
       "image": "assets/obra-swtxvd9-msbxk7j7.jpg"
     },
     {
-      "id": "jc4exyi",
-      "caption": "Título de la obra — técnica, año.",
-      "image": "assets/obra-jc4exyi-msbxk8wp.jpg"
-    },
-    {
       "id": "w4zy768",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Niño",
       "image": "assets/obra-w4zy768-msbxka5x.jpg"
     },
     {
       "id": "kaiduit",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Pensamiento",
       "image": "assets/obra-kaiduit-msbxkbka.jpg"
     },
     {
       "id": "n5345ge",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Isa",
       "image": "assets/obra-n5345ge-msbxkcum.jpg"
     },
     {
       "id": "a5e9585",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Asia",
       "image": "assets/obra-a5e9585-msbxke0i.jpg"
     },
     {
       "id": "sj36b94",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Desnudo en blanco",
       "image": "assets/obra-sj36b94-msbxkfb3.jpg"
     },
     {
-      "id": "7jijg65",
-      "caption": "Título de la obra — técnica, año.",
-      "image": "assets/obra-7jijg65-msc4cb54.jpg"
-    },
-    {
       "id": "thmap9m",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Chica de la sandalia",
       "image": "assets/obra-thmap9m-msc4ccfk.jpg"
     },
     {
       "id": "ob2bt4w",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Asia",
       "image": "assets/obra-ob2bt4w-msese9pa.jpg"
     },
     {
       "id": "ssixt0w",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "\n",
       "image": "assets/obra-ssixt0w-msesebbx.jpg"
     },
     {
       "id": "6iewloi",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Exposición 2025",
       "image": "assets/obra-6iewloi-msesecrc.jpg"
     },
     {
       "id": "znxatkr",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Desnudo en negro",
       "image": "assets/obra-znxatkr-mseseesh.jpg"
     },
     {
       "id": "8mc1xp9",
-      "caption": "Título de la obra — técnica, año.",
+      "caption": "Retrato",
       "image": "assets/obra-8mc1xp9-msesegcp.jpg"
+    },
+    {
+      "id": "sltkyzr",
+      "caption": "Desnudo en negro",
+      "image": "assets/obra-sltkyzr-mset775g.jpg"
+    },
+    {
+      "id": "m38unl0",
+      "caption": "Un hombre",
+      "image": "assets/obra-m38unl0-mset78n2.jpg"
+    },
+    {
+      "id": "1ulazil",
+      "caption": "Acuarelas",
+      "image": "assets/obra-1ulazil-mset7a3o.jpg"
+    },
+    {
+      "id": "bmdmthe",
+      "caption": "Pastel",
+      "image": "assets/obra-bmdmthe-mset7bi6.jpg"
     }
   ]
 }
