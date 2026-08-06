@@ -9,6 +9,18 @@
 <x-dc>
 <helmet>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magda Negre — Escritora y escultora</title>
+  <meta name="description" content="Página personal de Magda Negre, escritora y escultora de Barcelona. Novelas, cuentos, relatos de misterio y obra escultórica." />
+  <link rel="canonical" href="https://magda-negre.github.io/magda-negre/" />
+  <meta name="author" content="Magda Negre" />
+  <meta name="google-site-verification" content="zPuWlUgDp5moAN1wx7MrCxYdK7XDmIjt-Q3l71KYldY" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Magda Negre" />
+  <meta property="og:title" content="Magda Negre — Escritora y escultora" />
+  <meta property="og:description" content="Página personal de Magda Negre, escritora y escultora de Barcelona. Novelas, cuentos, relatos de misterio y obra escultórica." />
+  <meta property="og:url" content="https://magda-negre.github.io/magda-negre/" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -20,6 +32,23 @@
     a { color: #a15a3a; }
     a:hover { color: #7d4229; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Magda Negre",
+    "alternateName": "Magda Negre Chauveau",
+    "url": "https://magda-negre.github.io/magda-negre/",
+    "email": "mailto:magda.negre@gmail.com",
+    "jobTitle": "Escritora y escultora",
+    "nationality": ["Espa\u00f1ola", "Francesa"],
+    "birthPlace": { "@type": "Place", "name": "Barcelona" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universitat de Barcelona" },
+    "knowsAbout": ["Literatura", "Novela", "Cuento", "Relato de misterio", "Escultura", "Arqueolog\u00eda", "Prehistoria"],
+    "description": "Escritora y escultora de Barcelona, con doble nacionalidad franco-espa\u00f1ola. Licenciada en Psicolog\u00eda y en Prehistoria e Historia Antigua por la Universitat de Barcelona.",
+    "sameAs": ["https://www.amazon.es/punta-iceberg-Magda-Negre-Chauveau/dp/8418854340"]
+  }
+  </script>
 </helmet>
 
 <div style="background:#f6f1e7; color:#2b2420; min-height:100vh; font-family:'EB Garamond', Georgia, serif; -webkit-font-smoothing:antialiased;" data-screen-label="Portada">
@@ -142,7 +171,7 @@
         <div style="font-family:'Jost', sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:0.1em; color:#8a7d6c; margin-bottom:14px;">Publicar en internet</div>
         <div style="font-family:'EB Garamond', serif; font-size:23px; margin-bottom:12px;">Clave de publicación</div>
         <p style="font-size:15.5px; line-height:1.6; color:#4a4038; margin:0 0 20px;">Pega aquí tu clave personal de GitHub. Se guarda solo en este navegador y hace falta una única vez.</p>
-        <input type="password" value="{{ tokenInput }}" onChange="{{ onTokenChange }}" onKeyDown="{{ onTokenKeyDown }}" placeholder="github_pat_…" autoFocus="{{ true }}" style="width:100%; box-sizing:border-box; padding:12px 14px; font-family:'Jost', sans-serif; font-size:14px; color:#2b2420; background:#efe6d6; border:1px solid rgba(43,36,32,0.14); border-radius:2px; outline:none;" />
+        <input type="text" value="{{ tokenInput }}" onChange="{{ onTokenChange }}" onKeyDown="{{ onTokenKeyDown }}" placeholder="github_pat_…" autoFocus="{{ true }}" autoComplete="off" autoCorrect="off" spellCheck="{{ false }}" name="clave-publicacion-mn" style="width:100%; box-sizing:border-box; padding:12px 14px; font-family:'Jost', sans-serif; font-size:14px; color:#2b2420; background:#efe6d6; border:1px solid rgba(43,36,32,0.14); border-radius:2px; outline:none;" />
         <div style="font-family:'Jost', sans-serif; font-size:12.5px; color:#b0442f; min-height:20px; margin:8px 0 16px;">{{ tokenError }}</div>
         <div style="display:flex; gap:10px;">
           <button onClick="{{ submitToken }}" style="flex:1; padding:12px; border:none; border-radius:2px; background:#a15a3a; color:#f6f1e7; font-family:'Jost', sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Guardar y publicar</button>
