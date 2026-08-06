@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://magda-negre.github.io/magda-negre/sitemap.xml
