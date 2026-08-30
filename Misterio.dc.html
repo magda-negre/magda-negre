@@ -14,6 +14,7 @@
 <meta property="og:description" content="Relatos de misterio de Magda Negre, escritora de Barcelona. Historias de intriga y misterio.">
 <meta property="og:url" content="https://magda-negre.github.io/magda-negre/Misterio.dc.html">
 <meta name="twitter:card" content="summary">
+<style>html,body{margin:0;padding:0;background:#f6f1e7}</style>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -205,6 +206,7 @@ class Component extends DCLogic {
     };
     this.mutate((c) => c[SECTION].push(item));
     this.setState({ openId: item.id });
+    window.scrollTo(0, 0);
   };
 
   updateCurrent = (field, value) => {
@@ -270,7 +272,7 @@ class Component extends DCLogic {
     };
     const items = [...list].sort((a, b) => parseYear(b.year) - parseYear(a.year)).map((it) => ({
       ...it,
-      onOpen: () => this.setState({ openId: it.id }),
+      onOpen: () => { this.setState({ openId: it.id }); window.scrollTo(0, 0); },
       onDelete: () => this.mutate((d) => {
         const i = d[SECTION].findIndex((x) => x.id === it.id);
         if (i >= 0) d[SECTION].splice(i, 1);
@@ -293,7 +295,7 @@ class Component extends DCLogic {
       currentText: current ? current.text : '',
       backLabel: w.back,
       addLabel: '+ Añadir ' + w.singular,
-      closeItem: () => this.setState({ openId: null }),
+      closeItem: () => { this.setState({ openId: null }); window.scrollTo(0, 0); },
       onTitleBlur: (e) => this.updateCurrent('title', e.target.innerText),
       onYearBlur: (e) => this.updateCurrent('year', e.target.innerText.trim()),
       onTextBlur: (e) => this.updateCurrent('text', e.target.innerText),
@@ -327,11 +329,5 @@ class Component extends DCLogic {
 }
 
 </script>
-
-<!-- Índice estático: enlace permanente a la versión sin JavaScript de la obra.
-     Está fuera de <x-dc> a propósito, para que exista en el HTML servido. -->
-<footer style="background:#f6f1e7;border-top:1px solid rgba(43,36,32,0.14);padding:34px 48px 44px;text-align:center;font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:0.06em;color:#8a7d6c;">
-  <a href="./biblioteca.html" style="color:#a15a3a;text-decoration:none;text-transform:uppercase;letter-spacing:0.09em;">Índice completo de la obra</a>
-</footer>
 </body>
 </html>
