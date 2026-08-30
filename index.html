@@ -161,6 +161,9 @@
     <div style="margin-top:28px;">
       <a href="{{ amazonUrl }}" target="_blank" rel="noopener" style="font-family:'Jost', sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#8a7d6c; text-decoration:none; border-bottom:1px solid rgba(43,36,32,0.2); padding-bottom:2px;">{{ amazonLabel }} →</a>
     </div>
+    <div style="margin-top:18px;">
+      <a href="./biblioteca.html" style="font-family:'Jost', sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#8a7d6c; text-decoration:none; border-bottom:1px solid rgba(43,36,32,0.2); padding-bottom:2px;">Índice completo de la obra →</a>
+    </div>
   </footer>
 
   <sc-if value="{{ askingCode }}" hint-placeholder-val="{{ false }}">
@@ -380,11 +383,5 @@ class Component extends DCLogic {
 }
 
 </script>
-
-<!-- Índice estático: enlace permanente a la versión sin JavaScript de la obra.
-     Está fuera de <x-dc> a propósito, para que exista en el HTML servido. -->
-<footer style="background:#f6f1e7;border-top:1px solid rgba(43,36,32,0.14);padding:34px 48px 44px;text-align:center;font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:0.06em;color:#8a7d6c;">
-  <a href="./biblioteca.html" style="color:#a15a3a;text-decoration:none;text-transform:uppercase;letter-spacing:0.09em;">Índice completo de la obra</a>
-</footer>
 </body>
 </html>
