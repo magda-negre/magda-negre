@@ -12,6 +12,26 @@ Web estática publicada con GitHub Pages. El contenido (biografía, escritos, ob
 | `assets/` | Fotografías subidas desde la web |
 | `site-data.js` | Carga del contenido y publicación en GitHub |
 | `support.js` | Motor de la página (no tocar) |
+| `build.py` | Genera la versión estática (no tocar) |
+| `obra/` · `biblioteca.html` · `sitemap.xml` | **Generados automáticamente — no editar a mano** |
+
+## Por qué hay una versión estática
+
+La web se monta en el navegador con JavaScript, y los buscadores no leen bien
+ese contenido: Google solo veía el título de la página, ni una línea de los
+textos. Por eso `build.py` genera además una copia en HTML puro:
+
+- `obra/<titulo>.html` — una página por cada novela, cuento y relato, con el
+  texto completo dentro del HTML y su propia dirección para poder compartirla.
+- `biblioteca.html` — índice de toda la obra, también sin JavaScript.
+- `sitemap.xml` — la lista de direcciones que se le da a Google.
+
+**No hace falta hacer nada:** al pulsar «Publicar cambios» en la web, GitHub
+regenera estas páginas solo, en un minuto. Los textos que aún ponen «Escribe
+aquí el texto.» se generan pero se marcan para que Google no los indexe, y
+pasan a ser visibles en cuanto se les escriba el contenido.
+
+Para regenerarlas a mano hace falta Python: `python3 build.py`.
 
 ## Publicar la web (una sola vez)
 

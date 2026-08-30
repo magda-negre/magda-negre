@@ -1,0 +1,46 @@
+name: Regenerar la web estática
+
+# Cuando Magda pulsa "Publicar cambios" en la web, el navegador sube
+# content.json al repositorio. Eso dispara este proceso, que vuelve a generar
+# las páginas de obra/, biblioteca.html y sitemap.xml para que el contenido
+# nuevo esté también en el HTML (que es lo que leen Google y las redes).
+on:
+  push:
+    branches: [main]
+    paths:
+      - content.json
+      - build.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Si publica dos veces seguidas, basta con regenerar una vez al final.
+concurrency:
+  group: build-estatico
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generar páginas estáticas
+        run: python3 build.py
+
+      - name: Publicar los cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A obra biblioteca.html sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No hay nada que regenerar."
+          else
+            git commit -m "Regenerar la web estática desde content.json"
+            git push
+          fi
